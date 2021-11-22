@@ -1,0 +1,81 @@
+.carousel {
+    &-bg {
+        position: relative;
+        padding: 0;
+        &:before {
+            content: "";
+            display: block;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: $spacer*10;
+            display: block;
+            position: absolute;
+            background: url('../images/carousel-bg.jpg') no-repeat 0% 90%;
+            background-size: cover;
+            @include media-breakpoint-down(lg) {
+                bottom: $spacer*4;
+            }
+        }
+    }
+
+    &-item {
+        padding: $spacer*4 0 0 0;
+        text-align: center;
+        color: $white;
+    }
+
+    &__title {
+        font-size: 30px;
+        color: $white;
+        margin-bottom: $spacer;
+         @include media-breakpoint-down(lg) {
+        font-size: $spacer*1.5;
+        margin-bottom: $spacer*.5;
+         
+         }
+    }
+
+    &__text {
+        font-size: $font-size-lg;
+    }
+
+    &-control {
+        &-prev, &-next {
+            top: 50%;
+            margin-top: -42px;
+            opacity: 1;
+            @include media-breakpoint-down(lg) {
+                margin-top: -10px;
+            }
+
+            &-icon {
+                background: none;
+                display: block;
+                height: 84px;
+                width: 48px;
+                transform: none;
+                @include media-breakpoint-down(lg) {
+                    max-width: 12px;
+                    max-height: 21px;
+                }
+            }
+        }
+
+        &-prev {
+            @include media-breakpoint-down(lg) {
+                left: -$spacer*1.5;
+            }
+
+            &-icon {
+                transform: rotate(180deg);
+            }
+        }
+
+        &-next {
+            @include media-breakpoint-down(lg) {
+                right: -$spacer*1.5;
+            }
+        }
+    }
+}

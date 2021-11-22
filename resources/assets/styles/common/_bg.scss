@@ -1,0 +1,10 @@
+.bg {
+  &-light{
+    position: relative;
+    background-color: $beige;
+  }
+  &-dark{
+    background: $primary!important;
+    color: $white;
+  }
+}

@@ -1,0 +1,38 @@
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    background: $primary-2;
+    padding: $spacer 0;
+    z-index: 100;
+
+  &-collapse{
+    @include media-breakpoint-down(lg){
+      background: $primary-2;
+      margin-left: -32px!important;
+      margin-right: -32px;
+      z-index: 100;
+    }
+    }
+    &__brand {
+        display: block;
+        width: 160px;
+        &__image {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+        }
+    }
+}
+.main .navbar{
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+}

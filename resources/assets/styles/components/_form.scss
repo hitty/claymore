@@ -1,0 +1,67 @@
+::-webkit-input-placeholder {
+  font-size: 13px;
+  color: rgba($white, .6);
+  font-family: $font-family;
+}
+
+::-moz-placeholder {
+  font-size: 13px;
+  color: rgba($white, .6);
+  font-family: $font-family;
+}
+
+:-ms-input-placeholder {
+  font-size: 13px;
+  color: rgba($white, .6);
+  font-family: $font-family;
+}
+
+:-moz-placeholder {
+  font-size: 13px;
+  color: rgba($white, .6);
+  font-family: $font-family;
+}
+
+.form {
+  &__control {
+    width: 100%;
+    height: $spacer*2.5;
+    line-height: $spacer*2.5;
+    padding: 0 $spacer*1;
+    color: $white;
+    border-radius: 3px;
+    background: #5d6d7e;
+    border: 1px solid #5d6d7e;
+    outline: none;
+    transition: $transition-base;
+    &:hover{
+      border-color: rgba($green,.3);
+    }
+    &:active{
+      border-color: $green;
+    }
+  }
+  &__select {
+    color: rgba($white, .6);
+    appearance:none;
+    background-image: url('../images/select-arrow.png');
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+    background-size: 39px 34px;
+    cursor: pointer;
+    &:active,
+    &:focus{
+      background-image: url('../images/select-arrow-rotate.png');
+    }
+  }
+  &__button{
+    min-width: $spacer*10;
+
+  }
+
+}
+textarea{
+  min-height: $spacer*5.5;
+  max-height: $spacer*5.5;
+  height: $spacer*5.5;
+}

@@ -1,0 +1,18 @@
+.tgb {
+  padding: 80px 0;
+@include media-breakpoint-down(lg){
+  padding: 40px 0;
+}
+  &__card {
+        text-align: center;
+    }
+
+    &__title {
+        margin: $spacer*1.5 0 $spacer*1.25 0;
+    }
+
+    &__text {
+        margin: 0;
+        padding: 0;
+    }
+}

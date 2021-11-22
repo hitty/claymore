@@ -1,0 +1,36 @@
+.nav {
+  display: flex;
+  flex-wrap: nowrap;
+  @include media-breakpoint-down(lg){
+    display: block;
+    text-align: center;
+    background: $primary-2;
+    padding: $spacer*2;
+    z-index: 100;
+    position: relative;
+  }
+  &__item {
+    display: block;
+    @include media-breakpoint-down(lg){
+    margin: $spacer 0;
+    }
+  }
+
+  &__link {
+    color: white;
+    padding: 16px 4px;
+    border-bottom: 2px solid transparent;
+    margin: 0 8px;
+    font-size: $font-size-lg;
+     @include media-breakpoint-down(lg){
+       padding-bottom: 6px;
+     }
+
+    &--active,
+    &:hover{
+      border-bottom-color: $green;
+      color: white;
+    }
+  }
+
+}

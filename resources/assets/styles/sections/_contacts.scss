@@ -1,0 +1,36 @@
+.contacts{
+  color: $white;
+  &__title{
+    font-size: 24px;
+    margin-bottom: $spacer;
+    color: $white;
+  }
+  &__text{
+    line-height: 20px;
+    margin: 0;
+    color: $white;
+    @include media-breakpoint-down(lg) {
+      text-align: center;
+    }
+  }
+  &__information{
+    margin-top: $spacer-2;
+    font-weight: $font-weight-regular;
+    color: $white;
+    &__item{
+      position: relative;
+      padding-left: 30px;
+      margin-top: $spacer*0.5;
+    }
+    &__image{
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  &__link{
+    color: $white;
+    text-decoration: none;
+  }
+}

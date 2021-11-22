@@ -1,0 +1,22 @@
+.about{
+  &__images{
+    text-align: right;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: end;
+    @include media-breakpoint-down(lg){
+      text-align: center;
+      justify-content: center;
+    }
+  }
+  &__text{
+    font-weight: $font-weight-regular;
+    font-size: $font-size-lg;
+    @include media-breakpoint-down(lg){
+       font-size: $font-size-text;
+       text-align: center;
+    }
+  }
+
+}
