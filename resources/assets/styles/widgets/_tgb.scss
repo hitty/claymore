@@ -6,7 +6,11 @@
   &__card {
         text-align: center;
     }
-
+&__img{
+  display: block;
+  max-width: 100px;
+  max-height: 85px;
+}
     &__title {
         margin: $spacer*1.5 0 $spacer*1.25 0;
     }

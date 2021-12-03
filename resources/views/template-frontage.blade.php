@@ -5,24 +5,80 @@
 @extends('layouts.app', ['class'=>'main'])
 
 @section('content')
-  @php do_action('get_header') @endphp
-  @include('partials.header')
+  @while (have_posts()) @php the_post() @endphp
+  @php
+    $post_id = get_the_ID();
+  @endphp
+  <header class="header">
+    -- {!! wp_get_attachment_image( get_field('header_background', $post_id ), 'large', '', ['class'=>'header__background'] ) !!} --
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg">
+          {!! wp_get_attachment_image(
+                get_field('header_image', $post_id ),
+                'large',
+                '',
+                ['class'=>'header__image']
+              )
+          !!}
+        </div>
+        <div class="col-12 col-lg">
+          <h1 class="header__title">
+          @if( get_field('header_title', $post_id ) ) {{the_field('header_title', $post_id )}}
+          @else Quam eleifend metus commodo
+          @endif
+          </h1>
+
+          @if( get_field('header_description', $post_id ) )
+          <h4 class="header__subtitle">
+            {{the_field('header_description', $post_id )}}
+          </h4>
+
+          @endif
+
+          @if( have_rows('header_buttons', $post_id) )
+            <div class="header__buttons">
+            @php
+              while( have_rows('header_buttons', $post_id) ): the_row();
+              $index = get_row_index();
+            @endphp
+              <a href="{{ the_sub_field('link') }}" class="header__button button @if( $index % 2 == 1) button--primary @else button--blue @endif ">{{ the_sub_field('title') }}</a>
+              <span class="header__button__divider">or</span>
+            @endwhile
+            </div>
+          @endif
+
+
+        </div>
+      </div>
+    </div>
+  </header>
 
   <section class="about">
     <div class="container">
       <div class="row align-items-end">
+        <div class="col-12">
+        </div>
         <div class="col-lg-8 col-12 order-lg-1 order-2 mt-4 mt-lg-0">
-          <h3>About us</h3>
-          <p class="m-0 about__text">Sed non massa quis nisl tincidunt posuere sit amet vitae sem. Praesent
-            sed convallis quam. Donec hendrerit neque sit amet tellus ornare et
-            semper lorem lacinia. Suspendisse ac pellentesque odio. Nunc pharetra
-            malesuada nisi ac condimentum. Curabitur porttitor pulvinar </p>
+          @if( get_field('about_title', $post_id ) )
+            <h3>{{the_field('about_title', $post_id )}}</h3>
+          @endif
+          @if( get_field('about_text', $post_id ) )
+              {{ the_field('about_text', $post_id ) }}
+          @endif
         </div>
         <div class="col-lg-4 col-12 ms-auto order-lg-2 order-1 mb-lg-0 mb-3">
+          @if( get_field('about_image', $post_id ) )
           <div class="about__images">
-            <img src="@asset('images/about-img-big.svg')" class="" width="">
-            <img src="@asset('images/about-img-small.svg')" class="ms-2" width="">
+            {!! wp_get_attachment_image(
+                get_field('about_image', $post_id ),
+                'large',
+                '',
+                [ 'class' => 'd-block']
+              )
+          !!}
           </div>
+          @endif
         </div>
       </div>
     </div>
@@ -31,36 +87,26 @@
   <section class="bg-light tgb">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 col-12 mb-lg-0 mb-5">
-          <div class="tgb__card">
-            <img src="@asset('images/tgb-img-1.svg')" alt="" class="tgb__img mx-auto">
-            <h3 class="tgb__title">Fully Baked up</h3>
-            <p class="tgb__text">Curabitur tincidunt dapibus odio, eu gravida felis
-              blandit vel. Vivamus feugiat auctor lorem non
-              eleifend. Nam eu pellentesque est, vitae
-              interdum nisi.</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-12 mb-lg-0 mb-5">
-          <div class="tgb__card">
-            <img src="@asset('images/tgb-img-2.svg')" alt="" class="tgb__img mx-auto">
-            <h3 class="tgb__title">Build With Love</h3>
-            <p class="tgb__text">Nullam dignissim felis diam, sed ultricies nisl
-              ultricies quis. Maecenas feugiat urna ante, et
-              viverra tellus facilisis ut. In hac habitasse platea
-              dictumst.</p>
-          </div>
-        </div>
-        <div class="col-lg-4 col-12">
-          <div class="tgb__card">
-            <img src="@asset('images/tgb-img-3.svg')" alt="" class="tgb__img mx-auto">
-            <h3 class="tgb__title">Fully Responsive</h3>
-            <p class="tgb__text">Aliquam mattis massa at urna tincidunt ultrices.
-              Curabitur lobortis ante vulputate, imperdiet felis
-              a, adipiscing odio aliquam pharetra molestie
-              mauris</p>
-          </div>
-        </div>
+        @if( have_rows('tgb_list', $post_id) )
+            @php
+              while( have_rows('tgb_list', $post_id) ): the_row();
+              $index = get_row_index();
+            @endphp
+            <div class="col-lg-4 col-12 mb-lg-0 mb-5">
+              <div class="tgb__card">
+                {!! wp_get_attachment_image(
+                      get_sub_field('image'),
+                      'large',
+                      '',
+                      [ 'class' => 'tgb__img mx-auto']
+                    )
+                !!}
+                <h3 class="tgb__title">{{the_sub_field( 'title')}}</h3>
+                <p class="tgb__text">{{the_sub_field( 'text')}}</p>
+              </div>
+            </div>
+            @endwhile
+        @endif
       </div>
     </div>
   </section>
@@ -262,7 +308,7 @@
       </div>
     </div>
   </section>
-
+  @endwhile
 
 @endsection
 

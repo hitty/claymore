@@ -9,14 +9,14 @@
     z-index: 100;
     position: relative;
   }
-  &__item {
+  & li {
     display: block;
     @include media-breakpoint-down(lg){
-    margin: $spacer 0;
+      margin: $spacer 0;
     }
   }
 
-  &__link {
+  & a {
     color: white;
     padding: 16px 4px;
     border-bottom: 2px solid transparent;
@@ -26,11 +26,15 @@
        padding-bottom: 6px;
      }
 
-    &--active,
     &:hover{
       border-bottom-color: $green;
       color: white;
     }
+  }
+
+  & li.current_page_item a {
+    border-bottom-color: $green;
+    color: white;
   }
 
 }

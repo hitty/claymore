@@ -1,72 +1,92 @@
 .header {
-    padding: $spacer*20 0 0 0;
+  padding: $spacer*20 0 0 0;
+  color: white;
+  position: relative;
+  @include media-breakpoint-down(lg) {
+    padding: $spacer*10 0 $spacer*10 0;
+  }
+
+  &__title {
     color: white;
-    background: url('../images/header-bg.jpg') no-repeat bottom center;
-    background-size: cover;
+    font-size: 30px;
+    font-weight: $font-weight-base;
+    margin-bottom: 40px;
+    margin-top: 60px;
     @include media-breakpoint-down(lg) {
-        padding: $spacer*10 0 $spacer*10 0;
+      font-size: 24px;
+      margin: $spacer*1.5 0;
+      text-align: center;
     }
+  }
 
-    &__title {
-        color: white;
-        font-size: 30px;
-        font-weight: $font-weight-base;
-        margin-bottom: 40px;
-        margin-top: 60px;
-        @include media-breakpoint-down(lg) {
-            font-size: 24px;
-            margin: $spacer*1.5 0 ;
-            text-align: center;
-        }
+  &__subtitle {
+    font-weight: $font-weight-base;
+    color: white;
+    font-weight: $font-weight-base;
+    font-size: 18px;
+    line-height: 30px;
+    @include media-breakpoint-down(lg) {
+      font-size: 16px;
+      text-align: center;
     }
+  }
 
-    &__subtitle {
-        font-weight: $font-weight-base;
-        color: white;
-        font-weight: $font-weight-base;
-        font-size: 18px;
-        line-height: 30px;
-        @include media-breakpoint-down(lg) {
-            font-size: 16px;
-            text-align: center;
-        }
+  &__buttons {
+    margin-top: $spacer*8;
+    @include media-breakpoint-down(lg) {
+      margin-top: $spacer*2;
     }
+  }
 
-    &__buttons {
-        margin-top: $spacer*8;
-        @include media-breakpoint-down(lg) {
-        margin-top: $spacer*2;
-        }
+  &__button {
+    &__divider {
+      width: 30px;
+      height: 30px;
+      border-radius: 30px;
+      background: $white;
+      color: #34495e;
+      font-size: 15px;
+      display: inline-block;
+      line-height: 28px;
+      text-align: center;
+      box-sizing: border-box;
+      margin: 0 -8px;
+      position: relative;
+      z-index: 4;
+      @include media-breakpoint-down(lg) {
+        margin: -4px auto;
+        display: block;
+      }
+      &:last-of-type{
+        display: none;
+      }
     }
+  }
 
-    &__button {
-        &__divider {
-            width: 30px;
-            height: 30px;
-            border-radius: 30px;
-            color: $blue;
-            background: $white;
-            color: #34495e;
-            font-size: 15px;
-            display: inline-block;
-            line-height: 28px;
-            text-align: center;
-            box-sizing: border-box;
-            margin: 0 -8px;
-            position: relative;
-            z-index: 4;
-            @include media-breakpoint-down(lg) {
-                margin: -4px auto;
-                display: block;
-            }
-        }
+  &__image {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+    z-index: 10;
+    margin: 0 auto;
+    @include media-breakpoint-down(lg) {
+      max-width: 320px;
+      margin: auto;
+      display: block;
     }
+  }
 
-    &__image {
-        @include media-breakpoint-down(lg) {
-            max-width: 320px;
-            margin: auto;
-            display: block;
-        }
-    }
+  &__background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: bottom;
+    z-index: 0;
+  }
 }
